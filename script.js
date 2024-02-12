@@ -4,15 +4,38 @@ $("#currentDay").text(dayjs().format("DD MMM YYYY [at] h:mm:ss a"));
 setInterval(function () {
   $("#currentDay").text(dayjs().format("DD MMM YYYY [at] h:mm:ss a"));
 }, 1000);
+
  
 // * Present timeblocks for standard business hours when the user scrolls down.
 
-// * Color-code each timeblock based on past, present, and future when the timeblock is viewed.
-currentHour = dayjs().hour() // gets current hour
+var businessHours = [
+  {time: "9 AM",
+    event: ""},
+  {time: "10 AM",
+    event: ""},
+  {time: "11 AM",
+    event: ""},
+  {time: "12 PM",
+    event: ""},
+  {time: "1 PM",
+    event: ""},
+  {time: "2 PM",
+    event: ""}, 
+  {time: "3 PM",
+    event: ""},
+  {time: "4 PM",
+    event: ""},
+  {time: "5 PM",
+    event: ""},    
+]
 
-if (currentHour >= "09") {
-  $("#09")
-}
+
+// * Color-code each timeblock based on past, present, and future when the timeblock is viewed.
+
+businessHours.forEach(function(businessHour,i) {
+  currentHour = businessHour.time;
+
+})
 
 // * Allow a user to enter an event when they click a timeblock
 
