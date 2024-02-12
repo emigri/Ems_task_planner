@@ -8,7 +8,12 @@ setInterval(function () {
 // * Present timeblocks for standard business hours when the user scrolls down.
 
 // * Color-code each timeblock based on past, present, and future when the timeblock is viewed.
- 
+currentHour = dayjs().hour() // gets current hour
+
+if (currentHour >= "09") {
+  $("#09")
+}
+
 // * Allow a user to enter an event when they click a timeblock
 
 // * Save the event in local storage when the save button is clicked in that timeblock.

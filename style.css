@@ -22,9 +22,9 @@ header {
   padding: 60px;
 }
 
-.description {
+/* .description {
   white-space: pre-wrap;
-}
+} */
 
 .time-block {
   text-align: center;
@@ -64,6 +64,8 @@ header {
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
+  display: block;
+  width: 100%;
 }
 
 .saveBtn i:hover {
