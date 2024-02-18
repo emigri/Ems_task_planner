@@ -31,11 +31,22 @@ var businessHours = [
 
 
 // * Color-code each timeblock based on past, present, and future when the timeblock is viewed.
-
 businessHours.forEach(function(businessHour,i) {
-  currentHour = businessHour.time;
 
 })
+
+function blockColour(time){
+  var currentHour = dayjs().hour();
+  var eventTime = businessHour.time;
+
+    if (currentHour.isBefore(eventTime)){
+      return "future";
+    } else if (currentHour.isAfter(eventTime)){
+      return "past";
+    } else {
+      return "present";
+    }
+  }
 
 // * Allow a user to enter an event when they click a timeblock
 
