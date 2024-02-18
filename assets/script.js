@@ -29,15 +29,30 @@ var businessHours = [
     event: ""},    
 ]
 
-
-// * Color-code each timeblock based on past, present, and future when the timeblock is viewed.
-businessHours.forEach(function(businessHour,i) {
+businessHours.forEach(function(businessHour, i) {
+  var timeblocks = 
+  // create HTML timeblocks and append to HTML file
+'<div class="time-block" id="'+ i +'">' +
+'<div class = "row input-group">' +
+  '<div class="col input-group hour">' + businessHour.time +'</div>' +
+    '<textarea class="form-control" type="text"'+ blockColour + '></textarea>' +
+      '<div class="col input-group">' +
+        '<button class="saveBtn btn-block" type="submit">' +
+          '<i class="fa-solid fa-floppy-disk"></i>' +
+        '</button>' +
+      '</div>' +
+  '</div>'+  
+'</div>' 
+$(".container").append(timeblocks);
 
 })
 
-function blockColour(time){
+// * Color-code each timeblock based on past, present, and future when the timeblock is viewed.
+
+function blockColour(){
+
+  var eventTime = "";
   var currentHour = dayjs().hour();
-  var eventTime = businessHour.time;
 
     if (currentHour.isBefore(eventTime)){
       return "future";
@@ -46,11 +61,15 @@ function blockColour(time){
     } else {
       return "present";
     }
+   
   }
 
-// * Allow a user to enter an event when they click a timeblock
-
 // * Save the event in local storage when the save button is clicked in that timeblock.
+
+$('.saveBtn').on('click', function(){
+  
+})
+
 
 // * Persist events between refreshes of a page
 
