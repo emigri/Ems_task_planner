@@ -5,6 +5,7 @@ setInterval(function () {
   $("#currentDay").text(dayjs().format("DD MMM YYYY [at] h:mm:ss a"));
 }, 1000);
 
+console.log(localStorage)
  
 // * Present timeblocks for standard business hours when the user scrolls down.
 
@@ -35,7 +36,7 @@ businessHours.forEach(function(businessHour, i) {
 '<div class="time-block" id="'+ i +'">' +
 '<div class = "row input-group">' +
   '<div class="col input-group hour">' + businessHour.time +'</div>' +
-    '<textarea class="form-control '+ blockColour(businessHour.time) +'" type="text"></textarea>' +
+    '<textarea class="form-control activity-' + i + ' ' + blockColour(businessHour.time) +'"  type="text"></textarea>' +
       '<div class="col input-group">' +
         '<button class="saveBtn btn-block" type="submit">' +
           '<i class="fa-solid fa-floppy-disk"></i>' +
@@ -69,7 +70,15 @@ function blockColour(time) {
 // * Save the event in local storage when the save button is clicked in that timeblock.
 
 $('.saveBtn').on('click', function(event){
-  event.preventDefault()
+event.preventDefault()
 
-  $()
+
+var hourId = $('.time-block').attr('id')
+var text = $('.activity-' + id).val()
+
+localStorage.setItem('timeActivity', text)
+
+console.log(hourId)
+console.log(text)
+
 })
