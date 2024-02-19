@@ -35,7 +35,7 @@ businessHours.forEach(function(businessHour, i) {
 '<div class="time-block" id="'+ i +'">' +
 '<div class = "row input-group">' +
   '<div class="col input-group hour">' + businessHour.time +'</div>' +
-    '<textarea class="form-control" type="text"'+ blockColour + '></textarea>' +
+    '<textarea class="form-control '+ blockColour(businessHour.time) +'" type="text"></textarea>' +
       '<div class="col input-group">' +
         '<button class="saveBtn btn-block" type="submit">' +
           '<i class="fa-solid fa-floppy-disk"></i>' +
@@ -49,30 +49,27 @@ $(".container").append(timeblocks);
 
 // * Color-code each timeblock based on past, present, and future when the timeblock is viewed.
 
-function blockColour(){
+function blockColour(time) {
 
-  var eventTime = "";
-  var currentHour = dayjs().hour();
+  var eventTime = parseInt(time.split(' ')[0]);
+  var currentHour = parseInt(dayjs().format('H'));
 
-    if (currentHour.isBefore(eventTime)){
+    if (currentHour < eventTime){
       return "future";
-    } else if (currentHour.isAfter(eventTime)){
+    } else if (currentHour > eventTime){
       return "past";
     } else {
       return "present";
     }
-   
-  }
+
+    }
+
+
 
 // * Save the event in local storage when the save button is clicked in that timeblock.
 
-$('.saveBtn').on('click', function(){
-  
+$('.saveBtn').on('click', function(event){
+  event.preventDefault()
+
+  $()
 })
-
-
-// * Persist events between refreshes of a page
-
-// The following animation demonstrates the application functionality:
-
-// ![A user clicks on slots on the color-coded calendar and edits the events.](./images/05-third-party-apis-homework-demo.gif)
