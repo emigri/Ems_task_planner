@@ -75,7 +75,9 @@ function blockColour(time) {
           return plan.event !== "";
         }) // filtered obj to only show plans that have been saved 
 
-      localStorage.setItem('timeActivity', JSON.stringify(savedPlans))
-      console.log(localStorage)
+      if (savedPlans !== ""){
+      alert ("Your plan has been saved")
+        localStorage.setItem('timeActivity', JSON.stringify(savedPlans))
+      console.log(localStorage)}
     })
   })
