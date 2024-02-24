@@ -4,8 +4,6 @@ $("#currentDay").text(dayjs().format("DD MMM YYYY [at] h:mm:ss a"));
 setInterval(function () {
   $("#currentDay").text(dayjs().format("DD MMM YYYY [at] h:mm:ss a"));
 }, 1000);
-
-console.log(localStorage)
  
 // * Present timeblocks for standard business hours when the user scrolls down.
 
@@ -52,7 +50,7 @@ $(".container").append(timeblocks);
 
 function blockColour(time) {
 
-  var eventTime = parseInt(time.split(' ')[0]);
+  var eventTime = parseInt(time.split(' ')[0]); //
   var currentHour = parseInt(dayjs().format('H'));
 
     if (currentHour < eventTime){
@@ -65,20 +63,19 @@ function blockColour(time) {
 
     }
 
+//For each button that is clicked, update event key of businesshours obj
 
+  $(".saveBtn").each(function(i) {
+    $(this).click(function(){
+        // Get the text from the corresponding textarea
+        var text = $("textArea").eq(i).val();
+        businessHours[i].event = text
+        
+        var savedPlans = businessHours.filter(function (plan){
+          return plan.event !== "";
+        }) // filtered obj to only show plans that have been saved 
 
-// * Save the event in local storage when the save button is clicked in that timeblock.
-
-$('.saveBtn').on('click', function(event){
-event.preventDefault()
-
-
-var hourId = $('.time-block').attr('id')
-var text = $('.activity-' + id).val()
-
-localStorage.setItem('timeActivity', text)
-
-console.log(hourId)
-console.log(text)
-
-})
+      localStorage.setItem('timeActivity', JSON.stringify(savedPlans))
+      console.log(localStorage)
+    })
+  })
