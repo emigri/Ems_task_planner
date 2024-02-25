@@ -50,7 +50,7 @@ $(".container").append(timeblocks);
 
 function blockColour(time) {
 
-  var eventTime = parseInt(time.split(' ')[0]); //
+  var eventTime = parseInt(time.split(' ')[0]);
   var currentHour = parseInt(dayjs().format('H'));
 
     if (currentHour < eventTime){
@@ -67,7 +67,6 @@ function blockColour(time) {
 
   $(".saveBtn").each(function(i) {
     $(this).click(function(){
-        // Get the text from the corresponding textarea
         var text = $("textArea").eq(i).val();
         businessHours[i].event = text
         
@@ -75,9 +74,14 @@ function blockColour(time) {
           return plan.event !== "";
         }) // filtered obj to only show plans that have been saved 
 
-      if (savedPlans !== ""){
-      alert ("Your plan has been saved")
-        localStorage.setItem('timeActivity', JSON.stringify(savedPlans))
-      console.log(localStorage)}
+      if (savedPlans == ""){
+      alert ("Please write a plan")} 
+      else {
+      alert ("This has been saved");
+      localStorage.setItem('timeActivity', JSON.stringify(savedPlans));
+      }
+
+      console.log(localStorage)
+
     })
   })
