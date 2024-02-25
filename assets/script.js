@@ -81,7 +81,5 @@ function blockColour(time) {
       localStorage.setItem('timeActivity', JSON.stringify(savedPlans));
       }
 
-      console.log(localStorage)
-
     })
   })
