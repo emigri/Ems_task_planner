@@ -54,12 +54,12 @@ function blockColour(time) {
 // past is white, current is red and future is green
 
   var eventTime = (time.split(' ')[0]);
-  var currentHour = (dayjs().format('h A'));
+  var currentHour = (dayjs().hour());
 
-  // console.log(eventTime)
+  console.log(eventTime)
   // console.log(time)
-  // console.log(currentHour)
-
+  console.log(currentHour)
+  
     if (currentHour < eventTime){
       return "future";
     } else if (currentHour > eventTime){
