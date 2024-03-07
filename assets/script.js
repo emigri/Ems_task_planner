@@ -49,16 +49,16 @@ $(".container").append(timeblocks);
 // * Color-code each timeblock based on past, present, and future when the timeblock is viewed.
 
 function blockColour(time) {
-// function is not reading time as as a 12hour clock. It is interpreting 1 PM as only the number 1
-// dayjs().hour(12) sets the time using dayjs. set time toString
-// past is white, current is red and future is green
 
-  var eventTime = (time.split(' ')[0]);
-  var currentHour = (dayjs().hour());
+  var eventTime = parseInt(time);
+  var currentHour = dayjs().hour();
 
-  console.log(eventTime)
-  // console.log(time)
-  console.log(currentHour)
+  if(time.includes("PM") && eventTime !==12) {
+    eventTime += 12
+  } else if (eventTime === 12) {
+    eventTime=0;
+  }
+
   
     if (currentHour < eventTime){
       return "future";
