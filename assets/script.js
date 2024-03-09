@@ -55,10 +55,7 @@ function blockColour(time) {
 
   if(time.includes("PM") && eventTime !==12) {
     eventTime += 12
-  } else if (eventTime === 12) {
-    eventTime=0;
   }
-
   
     if (currentHour < eventTime){
       return "future";
@@ -67,7 +64,7 @@ function blockColour(time) {
     } else {
       return "present";
     }
-
+   
     }
 
 //For each button that is clicked, update event key of businesshours obj
